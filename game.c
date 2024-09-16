@@ -273,7 +273,7 @@ int main() {
   char complexity[6]; 
   if (pid == 0) {
     while(1){
-    system("mpg123 ~/Downloads/experement.mp3 >/dev/null 2>&1");
+    system("mpg123 ./sounds/'pixel-fight-8-bit-arcade-music-background-music-for-video-36-second-208771 (mp3cut.net).mp3' >/dev/null 2>&1");
     }
   }
   
@@ -387,11 +387,11 @@ int main() {
     break;
    } else if(matrix[i][j] == '0') {
     zeroBacel(matrix,matrix2,mFlag,i,j,n);
-    system("mpg123 ~/Downloads/mixkit-arcade-retro-changing-tab-206.wav >/dev/null 2>&1");
+    system("aplay ./sounds/'mixkit-unlock-game-notification-253 (mp3cut.net).wav' >/dev/null 2>&1");
    } else {
    matrix2[i][j] = matrix[i][j];
    mFlag[i][j] = true;
-   system("mpg123 ~/Downloads/mixkit-arcade-retro-changing-tab-206.wav >/dev/null 2>&1");
+   system("aplay ./sounds/'mixkit-unlock-game-notification-253 (mp3cut.net).wav' >/dev/null 2>&1");
    }
    int count = 0;
   for (int i = 0; i < n; i++) {
@@ -410,7 +410,7 @@ int main() {
     kill(pid,SIGKILL);
     printf("\t congratulations \n\t   you are won\n\n");
     print(matrix2,n);
-    system("mpg123 ~/Downloads/congratulation_alert.mp3 >/dev/null 2>&1");
+    system("mpg123 ./sounds/'crowd-cheer-ii-6263 (mp3cut.net).mp3' >/dev/null 2>&1");
     break;
    }
   print(matrix2,n);
@@ -425,10 +425,10 @@ int main() {
     
     printf("\tyou lose\n\n");
     print(matrix,n);
-    system("aplay ~/Downloads/mario_coin.mp3 >/dev/null 2>&1");
+    system("aplay ./sounds/mixkit-8-bit-bomb-explosion-2811.wav >/dev/null 2>&1");
     exit(0);
   }
-  
+  exit(EXIT_SUCCESS);
   kill(pid,SIGKILL);
   
 }
