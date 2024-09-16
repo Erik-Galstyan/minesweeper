@@ -362,7 +362,7 @@ int main() {
     
   //      for (int i = 0; i < n; i++) {
   //   printf("\n\n");
-  //   for (int j = 0; j < n; j++) {
+  //   for (int j = 0; j < n; j++) {     Steps for win
   //     if (matrix[i][j] == '*') {
   //       continue;
   //     } else {
@@ -370,12 +370,14 @@ int main() {
   //     }
   //   }
   //  }
+
    printf("\n\n");
    
    print(matrix2,n);
    printf("please input the i and j kordinats\n");
    scanf("%d %d", &i ,&j);
    if(i == -1 && j == -1) {
+    raise(SIGINT);
     break;
    } else if (i < 0 || j < 0 || i >= n || j >= n || mFlag[i][j] == true) {
     system("clear");
