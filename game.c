@@ -189,7 +189,7 @@ void print(char** arr,int n) {
 }
 
 
-void bomberLcel(char** arr,bool** mFlag, int size,int n) {
+void sattingBombs(char** arr,bool** mFlag, int size,int n) {
   int i = 0;
   int j = 0;
      srand(time(NULL)) ;
@@ -209,7 +209,7 @@ void bomberLcel(char** arr,bool** mFlag, int size,int n) {
   
 }
 
-void jogelBomberiQanak(char** arr, int n) {
+void understandingCountOfBombs(char** arr, int n) {
   for (int i = 0; i < n; i++) {
     for (int j = 0; j < n; j++) {
       if (arr[i][j] == '*') {
@@ -223,7 +223,7 @@ void jogelBomberiQanak(char** arr, int n) {
 }
 
 
-void zeroBacel(char** arr, char** arr2, bool** mFlag, int i, int j, int n) {
+void openZeroes(char** arr, char** arr2, bool** mFlag, int i, int j, int n) {
     if (i < 0 || j < 0 || i >= n || j >= n || mFlag[i][j]) {
         return;
     }
@@ -251,12 +251,12 @@ void zeroBacel(char** arr, char** arr2, bool** mFlag, int i, int j, int n) {
         arr2[i+1][j-1] = arr[i+1][j-1];
         mFlag[i+1][j-1] = true;
       }
-        zeroBacel(arr, arr2, mFlag, i + 1, j, n);
-        zeroBacel(arr, arr2, mFlag, i - 1, j, n);
-        zeroBacel(arr, arr2, mFlag, i, j + 1, n);
-        zeroBacel(arr, arr2, mFlag, i, j - 1, n);
-        zeroBacel(arr, arr2, mFlag, i + 1, j + 1, n);
-        zeroBacel(arr, arr2, mFlag, i + 1, j + 1, n);
+        openZeroes(arr, arr2, mFlag, i + 1, j, n);
+        openZeroes(arr, arr2, mFlag, i - 1, j, n);
+        openZeroes(arr, arr2, mFlag, i, j + 1, n);
+        openZeroes(arr, arr2, mFlag, i, j - 1, n);
+        openZeroes(arr, arr2, mFlag, i + 1, j + 1, n);
+        openZeroes(arr, arr2, mFlag, i + 1, j + 1, n);
     } 
 }
 
@@ -331,14 +331,14 @@ int main() {
    }
 
   if (!strcmp(complexity,"easy")) {
-   bomberLcel(matrix,mFlag,n,n);
+   sattingBombs(matrix,mFlag,n,n);
   } else if (!strcmp(complexity,"normal")) {
-   bomberLcel(matrix,mFlag,n,n+(n/2));
+   sattingBombs(matrix,mFlag,n,n+(n/2));
   } else if (!strcmp(complexity,"hard")) {
-   bomberLcel(matrix,mFlag,n,n+n);
+   sattingBombs(matrix,mFlag,n,n+n);
   }
   
-   jogelBomberiQanak(matrix,n);
+   understandingCountOfBombs(matrix,n);
   for (int i = 0; i < n; i++) {
     
     for (int j = 0; j < n; j++) {
@@ -386,7 +386,7 @@ int main() {
     loseFlag = 1;
     break;
    } else if(matrix[i][j] == '0') {
-    zeroBacel(matrix,matrix2,mFlag,i,j,n);
+    openZeroes(matrix,matrix2,mFlag,i,j,n);
     system("aplay ./sounds/'mixkit-unlock-game-notification-253 (mp3cut.net).wav' >/dev/null 2>&1");
    } else {
    matrix2[i][j] = matrix[i][j];
